@@ -1,22 +1,22 @@
 package Java_Appium.MobileAutomation;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import org.testng.annotations.Test;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import org.openqa.selenium.By;
 
-public class AppTest 
+
+
+public class AppTest extends BaseClass
 {
-
     @Test
     public void TestDataApp() throws MalformedURLException, URISyntaxException
     {
-       UiAutomator2Options options = new UiAutomator2Options();
-       options.setDeviceName("Pixel 3a API 34");
-       options.setApp("");
-       
-       AndroidDriver driver = new AndroidDriver(new URI("http://192.168.1.17:4723").toURL(), options);
+       driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Preference']")).click();
+       driver.findElement(By.xpath("//android.widget.TextView[@content-desc='3. Preference dependencies']")).click();
+       driver.findElement(By.id("android:id/checkbox")).click();
+       driver.findElement(By.xpath("(//android.widget.RelativeLayout)[2]")).click();
+       driver.findElement(By.id("android:id/edit")).sendKeys("Test Wifi");
+       driver.findElement(By.id("android:id/button1")).click();
     }
 }
